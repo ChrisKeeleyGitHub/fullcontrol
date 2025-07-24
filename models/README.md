@@ -10,6 +10,7 @@ parametric models and a design template ([also available in colab](https://colab
     - [anyangle phone stand](https://fullcontrol.xyz/#/models/4d0e78)  - [open in colab](https://colab.research.google.com/github/FullControlXYZ/fullcontrol/blob/master/models/colab/anyangle_phone_stand_colab.ipynb)
     - [blob printing](https://fullcontrol.xyz/#/models/800020)  - [open in colab](https://colab.research.google.com/github/FullControlXYZ/fullcontrol/blob/master/models/colab/blob_printing_colab.ipynb)
     - [nuts_and_bolts](https://fullcontrol.xyz/#/models/393a4c)  - [open in colab](https://colab.research.google.com/github/FullControlXYZ/fullcontrol/blob/master/models/colab/nuts_and_bolts_colab.ipynb)
+    - wavy woven vase - [open in colab](https://colab.research.google.com/github/FullControlXYZ/fullcontrol/blob/master/models/colab/wavy_woven_vase_colab.ipynb)
     - [lampshade](https://fullcontrol.xyz/#/models/ebdc86)  - [open in colab](https://colab.research.google.com/gist/fullcontrol-xyz/589c78de0093698a07ec724af6428f09/fullcontrol-lampshade.ipynb)
 
 more designs are available on the fullcontrol [gists page](https://gist.github.com/fullcontrol-xyz)
