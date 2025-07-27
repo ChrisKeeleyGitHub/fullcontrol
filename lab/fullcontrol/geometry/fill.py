@@ -45,11 +45,11 @@ def fill_base_simple(steps: list, segments_per_layer: int, solid_layers: int, ex
     new_steps = []
     for i in range(len(steps)):
         t_val = i/segments_per_layer  # tval = 0 to layers
-        new_steps.append(steps[i])
-        if t_val > 0 and t_val % 1 == 0 and t_val <= solid_layers:
+        if t_val > 0 and i % segments_per_layer == 0 and t_val <= solid_layers:
             last_point = new_steps[-1]
             new_steps.extend(move(solid_layer, Vector(z=last_point.z)))
             new_steps.extend(travel_to(last_point))
+        new_steps.append(steps[i])
     return new_steps
 
 
@@ -58,12 +58,12 @@ def fill_base_full(steps: list, segments_per_layer: int, solid_layers: int, extr
     new_steps = []
     for i in range(len(steps)):
         t_val = i/segments_per_layer  # tval = 0 to layers
-        new_steps.append(steps[i])
-        if t_val > 0 and t_val % 1 == 0 and t_val <= solid_layers:
+        if t_val > 0 and i % segments_per_layer == 0 and t_val <= solid_layers:
             current_layer_outline = steps[i-segments_per_layer:i]
             solid_layer = create_solid_layer(
                 current_layer_outline, extrusion_width, 0)
             last_point = new_steps[-1]
             new_steps.extend(move(solid_layer, Vector(z=last_point.z)))
             new_steps.extend(travel_to(last_point))
+        new_steps.append(steps[i])
     return new_steps
