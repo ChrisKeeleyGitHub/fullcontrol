@@ -2,27 +2,6 @@ from fullcontrol import Point, polar_to_point, point_to_polar, BoundingBox, Vect
 from lab.fullcontrol.geometry.convex import convex_pathsXY
 
 
-def _validate_points(steps: list) -> None:
-    """Ensure all elements of ``steps`` are :class:`Point` objects.
-
-    Parameters
-    ----------
-    steps : list
-        List to validate.
-
-    Raises
-    ------
-    TypeError
-        If any element is not a ``Point`` instance.
-    """
-    for i, step in enumerate(steps):
-        if not isinstance(step, Point):
-            raise TypeError(
-                "steps must contain only Point objects for layer detection; "
-                f"found {type(step).__name__} at index {i}"
-            )
-
-
 # necessary functions
 def create_solid_layer(outline: list, extrusion_width: float, z_height: float):
     ''' create a solid layer by offsetting the outline inwards by 0.25*extrusion_width, then
@@ -60,13 +39,7 @@ def fill_base_simple(steps: list, segments_per_layer: int, solid_layers: int, ex
     are similar. If the outline is changing a lot over the first few layers, use fill_base_full instead, 
     which finds the outline for each solid layer and used that to create the solid fill using the convex 
     function for each new outline.
-
-    Raises
-    ------
-    TypeError
-        If any element in ``steps`` is not a :class:`Point`.
     '''
-    _validate_points(steps)
     first_layer_points = steps[:segments_per_layer+1]
     solid_layer = create_solid_layer(first_layer_points, extrusion_width, 0)
     new_steps = []
@@ -84,10 +57,9 @@ def fill_base_full(steps: list, segments_per_layer: int, solid_layers: int, extr
     '''see fill_base_simple for an explanation of how this work
 
     The provided ``steps`` list should contain exactly one ``Point`` per
-    segment and no other step types. Supplying non-``Point`` steps will raise
-    a ``TypeError``.
+    segment and no other step types. Supplying non-``Point`` steps may cause
+    misalignment or errors.
     '''
-    _validate_points(steps)
     new_steps = []
     for i in range(len(steps)):
         t_val = i/segments_per_layer  # tval = 0 to layers
