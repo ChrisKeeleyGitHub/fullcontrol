@@ -1901,7 +1901,8 @@ helix_end_rad = 10
 helix = fc.helixZ(centre, helix_start_rad, helix_end_rad, 0, helix_layers, 0.2, helix_layers*segments_per_layer)
 steps = fclab.fill_base_simple(helix, segments_per_layer, solid_layers, EW)
 fc.transform(steps, 'plot', fc.PlotControls(style="line", zoom=0.8))
-steps = fclab.fill_base_full(helix, segments_per_layer, solid_layers, EW)
+# ref_midpoint ensures the solid layers are aligned when more than one is added
+steps = fclab.fill_base_full(helix, segments_per_layer, solid_layers, EW, centre)
 fc.transform(steps, 'plot', fc.PlotControls(style="line", zoom=0.8))
 
 
