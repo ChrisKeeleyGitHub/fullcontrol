@@ -54,12 +54,7 @@ def fill_base_simple(steps: list, segments_per_layer: int, solid_layers: int, ex
 
 
 def fill_base_full(steps: list, segments_per_layer: int, solid_layers: int, extrusion_width: float):
-    '''see fill_base_simple for an explanation of how this work
-
-    The provided ``steps`` list should contain exactly one ``Point`` per
-    segment and no other step types. Supplying non-``Point`` steps may cause
-    misalignment or errors.
-    '''
+    'see fill_base_simple for an explanation of how this work'
     new_steps = []
     for i in range(len(steps)):
         t_val = i/segments_per_layer  # tval = 0 to layers
