@@ -112,6 +112,40 @@ def linspace(start: float, end: float, number_of_points: int) -> list:
     return [start + float(x)/(number_of_points-1)*(end-start) for x in range(number_of_points)]
 
 
+def poly_arch_wave(t, cycles, power, flat_ratio):
+    """Return an arch-shaped polynomial wave with a zero-valued flat interval.
+
+    Parameters
+    ----------
+    t : float or list-like
+        Input value(s) for evaluating the waveform.
+    cycles : int or float
+        Number of repeats per unit interval.
+    power : float
+        Exponent controlling arch sharpness.
+    flat_ratio : float
+        Fraction of each cycle held at zero.
+
+    Returns
+    -------
+    float or list
+        Normalized waveform values between 0 and 1.
+    """
+    def _single(x):
+        if flat_ratio >= 1:
+            return 0.0
+        pos = (x * cycles) % 1.0
+        if pos < flat_ratio:
+            return 0.0
+        active = 1.0 - flat_ratio
+        y = (pos - flat_ratio) / active
+        val = (1 - abs(2*y - 1)) ** power
+        return max(0.0, min(1.0, val))
+    if isinstance(t, (list, tuple)):
+        return [_single(float(v)) for v in t]
+    return _single(float(t))
+
+
 def first_point(steps: list, fully_defined: bool = True) -> Point:
     '''
     Return the first Point in the list.
