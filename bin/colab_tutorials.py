@@ -43,7 +43,7 @@ model_notebook_colab_urls = [
     f'https://colab.research.google.com/github/FullControlXYZ/fullcontrol/blob/master/models/colab/{model_notebook_name[0:-6]}_colab.ipynb' for model_notebook_name in model_notebook_names]
 
 design_template_old = '../models/design_template.ipynb'
-design_template_new = 'https://github.com/FullControlXYZ/fullcontrol/blob/master/models/design_template.ipynb'
+design_template_new = 'https://colab.research.google.com/github/FullControlXYZ/fullcontrol/blob/master/models/colab/design_template_colab.ipynb'
 
 for notebook_address in notebook_addresses:
     content_string = open(notebook_address).read()

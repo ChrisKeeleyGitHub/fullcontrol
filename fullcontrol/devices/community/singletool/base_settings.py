@@ -22,7 +22,7 @@ default_initial_settings = {
         "retract": "G10 ; retract",
         "unretract": "G11 ; unretract",
         "absolute_coords": "G90 ; absolute coordinates",
-        "relative_coords": "G91 ; absolute coordinates",
+        "relative_coords": "G91 ; relative coordinates",
         "units_mm": "G21 ; set units to millimeters"
     }
 }

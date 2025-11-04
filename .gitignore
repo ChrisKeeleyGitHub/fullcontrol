@@ -136,3 +136,9 @@ tests/test_print_output.txt
 
 # MacOS file viewer metadata
 **/.DS_Store
+
+# ClaudeCodeMD
+CLAUDE.md
+
+# Temporary files
+tmp/
